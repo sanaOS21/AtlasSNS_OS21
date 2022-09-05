@@ -13,16 +13,26 @@ class PostsController extends Controller
     public function index()
     {
         //全ての投稿を取得
-        $post = Post::get();
-        return view('posts.index', ['post' => $post]);
+        //「latest()」（降順）だとorderByより短いらしい(⇔oleest()_昇順)0905
+        $posts = Post::latest()->get();
+        // $post = Post::get();
+        //compact...controllerから変数の受渡（可読性が高い）
+        return view('posts.index', compact('posts'));
     }
     //投稿機能
     public function create(Request $request)
     {
-        $post->user_id = Auth::id();
-        $post = $request->input('post');
+        Post::create([
+            //コントローラーではログインユーザ(Auth::user())のidプロパティを参照したい
+            'user_id' => Auth::user_id()->id,
+            'post' => $request->post,
+        ]);
 
-        \DB::table('posts')->insert(['post' => $post]);
+        // return back();
+        // $post->user_id = Auth::id();
+        // $post = $request->input('post');
+
+        // \DB::table('posts')->insert(['post' => $post]);
         return redirect('/top');
     }
     //作成した投稿を保存

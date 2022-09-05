@@ -26,7 +26,6 @@ Route::post('/login', 'Auth\LoginController@login');
 //新規登録画面
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
-
 //下記追加
 Route::get('/added', 'Auth\RegisterController@added')->name('auth.added');
 Route::post('/added', 'Auth\RegisterController@added');
@@ -34,6 +33,7 @@ Route::post('/added', 'Auth\RegisterController@added');
 //②ログイン中のページ
 
 //topページの表示
+// Route::group(['middleware' => "auth"], function () {
 Route::get('/top', 'PostsController@index');
 //投稿機能
 Route::post('/top', 'PostsController@create');
@@ -44,3 +44,5 @@ Route::get('/search', 'UsersController@index');
 
 Route::get('/follow-list', 'PostsController@index');
 Route::get('/follower-list', 'PostsController@index');
+// });
+//

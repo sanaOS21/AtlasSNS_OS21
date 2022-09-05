@@ -53,7 +53,6 @@ class RegisterController extends Controller
     public function Validator(array $data)
     {
         return Validator::make($data, [
-            // $rules = [
             // //ルールを定義
             'username' => 'required|string|max:12|min:2',
             'mail' => 'required|string|email|min:5|max:40|unique:username,mail',
@@ -91,18 +90,20 @@ class RegisterController extends Controller
         if ($request->isMethod('post')) {
             //dataメソッドを追加
             $data = $request->input();
-            // $validator = $this->Validator($data);
+            $validator = $this->Validator($data);
             // // dd($validator);
-            // if ($validator->fails()) {
-            //     return redirect('/register')
-            //         ->withErrors($validator)
-            //         ->withInput();
-            // }
+            //失敗したら
+            if ($validator->fails()) {
+                return redirect('/register')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
 
             //createメソッドを実行
             $this->create($data);
             // ↓ Controllerでwithで名前が出るように指示
-            return redirect('added')->with('UserName', $data['username']);
+            return redirect('added');
+            // ->with('UserName', $data['username']);
         }
         return view('auth.register');
     }
