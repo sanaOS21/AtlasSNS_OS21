@@ -28,7 +28,7 @@
         </td>
       </p>
     </tr>
-
+    @endforeach
   </div>
 </div>
 @endsection
