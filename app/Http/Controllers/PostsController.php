@@ -14,10 +14,10 @@ class PostsController extends Controller
     {
         //全ての投稿を取得
         //「latest()」（降順）だとorderByより短いらしい(⇔oleest()_昇順)0905
-        $posts = Post::latest()->get();
+        $post = Post::latest()->get();
         // $post = Post::get();
         //compact...controllerから変数の受渡（可読性が高い）
-        return view('posts.index', compact('posts'));
+        return view('posts.index', compact('post'));
     }
     //投稿機能
     public function create(Request $request)
