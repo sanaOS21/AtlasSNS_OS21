@@ -24,7 +24,7 @@ class PostsController extends Controller
     {
         Post::create([
             //コントローラーではログインユーザ(Auth::user())のidプロパティを参照したい
-            'user_id' => Auth::id(),
+            'user_id' => Auth::user()->id,
             'post' => $request->post,
         ]);
         // return back();
