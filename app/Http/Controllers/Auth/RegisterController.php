@@ -87,17 +87,19 @@ class RegisterController extends Controller
     public function register(Request $request)
     {
         // ↓リクエストメソッドが指定のものか確認【佐藤追記】
+        // dd($request);
         if ($request->isMethod('post')) {
-            //dataメソッドを追加
+            //     //dataメソッドを追加
             $data = $request->input();
-            $validator = $this->Validator($data);
-            // // dd($validator);
-            //失敗したら
-            if ($validator->fails()) {
-                return redirect('/register')
-                    ->withErrors($validator)
-                    ->withInput();
-            }
+            // dd($data);
+            // $validator = $this->Validator($data);
+            // // // dd($validator);
+            // //失敗したら
+            // if ($validator->fails()) {
+            //     return redirect('/register')
+            //         ->withErrors($validator)
+            //         ->withInput();
+            // }
 
             //createメソッドを実行
             $this->create($data);

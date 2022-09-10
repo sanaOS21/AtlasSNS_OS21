@@ -17,12 +17,16 @@
 // Route::get('/home', 'HomeController@index')->name('home');
 
 // Auth::routes(); はオプションとして引数を渡すことで使わない機能を制御する【佐藤追記】
+
+// use Illuminate\Routing\Route;
+
 Auth::routes();
 
 //①ログアウト中のページ
 //ログイン画面
 Route::get('/login', 'Auth\LoginController@login');
 Route::post('/login', 'Auth\LoginController@login');
+Route::get('/logout', 'Auth\LoginController@logout');
 //新規登録画面
 Route::get('/register', 'Auth\RegisterController@register');
 Route::post('/register', 'Auth\RegisterController@register');
@@ -36,7 +40,7 @@ Route::post('/added', 'Auth\RegisterController@added');
 // Route::group(['middleware' => "auth"], function () {
 Route::get('/top', 'PostsController@index');
 //投稿機能
-Route::post('/top', 'PostsController@create');
+Route::post('/post-create', 'PostsController@create');
 
 Route::get('/profile', 'UsersController@profile');
 

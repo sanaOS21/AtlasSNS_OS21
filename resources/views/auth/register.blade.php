@@ -2,7 +2,7 @@
 
 @section('content')
 
-{!!Form::open(['url' => '/added' ])!!}
+{!!Form::open(['url' => 'register' ])!!}
 @csrf
 <h2>新規ユーザー登録</h2>
 
@@ -22,7 +22,7 @@
 
 <p><a href="/login">ログイン画面へ戻る</a></p>
 
-{!! Form::close() !!}
+{!! Form::close(['url'=>'login']) !!}
 
 
 @endsection

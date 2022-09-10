@@ -24,15 +24,15 @@ class PostsController extends Controller
     {
         Post::create([
             //コントローラーではログインユーザ(Auth::user())のidプロパティを参照したい
-            'user_id' => Auth::user()->id,
-            'post' => $request->post,
+            'user_id' => Auth::id(),
+            'post' => $request->input('post'),
         ]);
         // return back();
         // $post->user_id = Auth::id();
         // $post = $request->input('post');
 
         // \DB::table('posts')->insert(['post' => $post]);
-        return view('posts.index', compact('posts'));
+        return redirect('/top');
     }
     // public function update(){
     //更新内容記載？
