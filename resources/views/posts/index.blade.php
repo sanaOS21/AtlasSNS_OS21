@@ -3,7 +3,7 @@
 @section('content')
 
 <!-- 投稿フォーム作成 -->
-<form action="/post-create" method="post">
+<form method="post" action="/post-create">
   @csrf
 
   <div class="main">

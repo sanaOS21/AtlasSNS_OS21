@@ -5,7 +5,7 @@
 
 <div id="clear">
   <!-- ↓ Controllerで指示 -->
-  <p>{{ session('UserName')}}さん</p>
+  <p>{{ session('username')}}さん</p>
   <p>ようこそ！AtlasSNSへ！</p>
   <p>ユーザー登録が完了しました。</p>
   <p>早速ログインをしてみましょう。</p>

@@ -58,7 +58,7 @@ class RegisterController extends Controller
             'mail' => 'required|string|email|min:5|max:40|unique:username,mail',
             //alpha_num...半角英数字
             'password' => 'required|string|min:8|max:20|confirmed|alpha_num',
-            'password_confirmation' => 'required|same:password',
+            'password_confirmation' => 'required',
         ]);
         // $validator = Validator::make($request->all(), $rules);
     }
@@ -103,6 +103,7 @@ class RegisterController extends Controller
 
             //createメソッドを実行
             $this->create($data);
+            $request->session()->put('username', $data['username']);
             // ↓ Controllerでwithで名前が出るように指示
             return redirect('added');
             // ->with('UserName', $data['username']);
