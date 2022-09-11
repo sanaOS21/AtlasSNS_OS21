@@ -41,6 +41,8 @@ Route::post('/added', 'Auth\RegisterController@added');
 Route::get('/top', 'PostsController@index');
 //投稿機能
 Route::post('/post-create', 'PostsController@create');
+//削除機能(削除はget)
+Route::get('/top/{id}/delete', 'PostsController@delete');
 
 Route::get('/profile', 'UsersController@profile');
 

@@ -15,7 +15,7 @@
 
 
 <div class=card-body>
-  @foreach($post as $post)
+  @foreach($posts as $post)
   <div class="tweet-area">
     <tr>
       <td>
@@ -26,6 +26,10 @@
           {{$post->post}}
         </td>
       </p>
+      <!-- 削除ボタン -->
+      <td><a href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか')">削除</a>
+      </td>
+      </tda>
     </tr>
     @endforeach
   </div>

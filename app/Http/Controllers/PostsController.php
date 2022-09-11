@@ -14,10 +14,10 @@ class PostsController extends Controller
     {
         //全ての投稿を取得
         //「latest()」（降順）だとorderByより短いらしい(⇔oleest()_昇順)0905
-        $post = Post::latest()->get();
+        $posts = Post::latest()->get();
         // $post = Post::get();
         //compact...controllerから変数の受渡（可読性が高い）
-        return view('posts.index', compact('post'));
+        return view('posts.index', compact('posts'));
     }
     //投稿機能
     public function create(Request $request)
@@ -27,21 +27,20 @@ class PostsController extends Controller
             'user_id' => Auth::id(),
             'post' => $request->input('post'),
         ]);
-        // return back();
-        // $post->user_id = Auth::id();
-        // $post = $request->input('post');
-
-        // \DB::table('posts')->insert(['post' => $post]);
         return redirect('/top');
     }
     // public function update(){
     //更新内容記載？
     // }
 
-    // public function delete(){
-    //消去内容記載？
-    // }
+    public function delete($id)
+    {
+        \DB::table('posts')
+            ->where('id', $id)
+            ->delete();
 
+        return redirect('/top');
+    }
     //作成した投稿を保存
     public function store(Request $request)
     {

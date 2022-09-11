@@ -55,7 +55,8 @@ class RegisterController extends Controller
         return Validator::make($data, [
             // //ルールを定義
             'username' => 'required|string|max:12|min:2',
-            'mail' => 'required|string|email|min:5|max:40|unique:username,mail',
+            //unique...一意であるか
+            'mail' => 'required|string|email|min:5|max:40|unique:users',
             //alpha_num...半角英数字
             'password' => 'required|string|min:8|max:20|confirmed|alpha_num',
             'password_confirmation' => 'required',
@@ -92,14 +93,14 @@ class RegisterController extends Controller
             //     //dataメソッドを追加
             $data = $request->input();
             // dd($data);
-            // $validator = $this->Validator($data);
-            // // // dd($validator);
-            // //失敗したら
-            // if ($validator->fails()) {
-            //     return redirect('/register')
-            //         ->withErrors($validator)
-            //         ->withInput();
-            // }
+            $validator = $this->Validator($data);
+            // // dd($validator);
+            //失敗したら
+            if ($validator->fails()) {
+                return redirect('/register')
+                    ->withErrors($validator)
+                    ->withInput();
+            }
 
             //createメソッドを実行
             $this->create($data);

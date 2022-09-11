@@ -79,8 +79,8 @@ return [
     | to any of the locales which will be supported by the application.
     |
     */
-
-    'locale' => 'en',
+    //下記変更_0911
+    'locale' => 'ja',
 
     /*
     |--------------------------------------------------------------------------
