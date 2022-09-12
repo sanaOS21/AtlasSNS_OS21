@@ -29,9 +29,17 @@ class PostsController extends Controller
         ]);
         return redirect('/top');
     }
-    // public function update(){
-    //更新内容記載？
-    // }
+    //カリキュラム参考
+    public function update(Request $request)
+    {
+        $id = $request->input('id');
+        $up_post = $request->input('upPost');
+        \DB::table('posts')
+            ->where('id', $id)
+            ->update(['post' => $up_post]);
+
+        return redirect('/top');
+    }
 
     public function delete($id)
     {
