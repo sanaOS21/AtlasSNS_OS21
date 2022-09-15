@@ -37,12 +37,14 @@
         <input type="textarea" name='upPost' value="{{$post->post}}">
         <input type="submit" value="更新">
       </form>
+
       <!-- 削除ボタン -->
       <td><a href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか')">削除</a>
       </td>
       </tda>
     </tr>
     @endforeach
+
   </div>
 </div>
 @endsection
