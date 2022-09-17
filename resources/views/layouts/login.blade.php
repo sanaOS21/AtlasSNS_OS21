@@ -27,7 +27,8 @@
             <h1><a href="http://127.0.0.1:8000/top"><img src="images/logo.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p>〇〇さん<img src=" images/arrow.png">
+                    <p>○○さん
+                        <img src=" images/arrow.png">
                     </p>
                     <div class="header-list">
                         <ul id="accordion" class="accordion">
@@ -64,8 +65,8 @@
     </div>
     <footer>
     </footer>
-    <script src="JavaScriptファイルのURL"></script>
-    <script src="JavaScriptファイルのURL"></script>
+    <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script src="{{ asset('/js/login.js') }}"></script>
 </body>
 
 </html>

@@ -41,6 +41,11 @@ Route::post('/added', 'Auth\RegisterController@added');
 Route::get('/top', 'PostsController@index');
 //投稿機能
 Route::post('/post-create', 'PostsController@create');
+
+//投稿更新
+Route::post('post/update', 'PostsController@update');
+
+
 //削除機能(削除はget)
 Route::get('/top/{id}/delete', 'PostsController@delete');
 //投稿削除機能

@@ -29,7 +29,26 @@
       <!-- 編集ボタン 参考サイトのまんま-->
       <td>
         <div class="content">
-          <a class="js-model-open" href="/top/{{$post->id}}" post="{{$post->post}}" id="{{ $post->id }}">編集</a>
+          <a class="js-model-open" href="" post="{{$post->post}}" id="{{ $post->id }}">編集</a>
+          <!-- モーダル内の動き -->
+          <div class="modal js-modal">
+            <div class="modal_bg js-modal-close"></div>
+            <div class="modal_content">
+              <form action="{{ route('posts.update') }}" method="post">
+                @csrf
+                <textarea class="modal_post" name="up_post"></textarea>
+                <input type="hidden" name="id" class="modal_is" value="{{$post->id}}">
+                <div class="btn-zone">
+                  <input class="edit-btn2 modal_id" type="image" src="{{ asset('images/edit.png') }}" value="更新" alt="更新">
+                  <a class="js-modal-close close-btn" href="">閉じる</a>
+                </div>
+              </form>
+            </div>
+          </div>
+
+
+
+
         </div>
       </td>
       <form action="/top">
