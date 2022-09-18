@@ -43,13 +43,13 @@ Route::get('/top', 'PostsController@index');
 Route::post('/post-create', 'PostsController@create');
 
 //投稿更新
-Route::post('post/update', 'PostsController@update');
+Route::post('posts/update', 'PostsController@update');
 
 
 //削除機能(削除はget)
 Route::get('/top/{id}/delete', 'PostsController@delete');
 //投稿削除機能
-Route::post('posts/update', 'PostsController@update');
+Route::post('post/update', 'PostsController@update');
 
 Route::get('/profile', 'UsersController@profile');
 

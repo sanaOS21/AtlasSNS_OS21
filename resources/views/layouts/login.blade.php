@@ -65,8 +65,9 @@
     </div>
     <footer>
     </footer>
+    <!-- JSのリンク設定 -->
     <script type="text/javascript" src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script src="{{ asset('/js/login.js') }}"></script>
+    <script src="{{ asset('/js/script.js') }}"></script>
 </body>
 
 </html>

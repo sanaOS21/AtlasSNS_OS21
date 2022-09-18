@@ -32,7 +32,9 @@ class PostsController extends Controller
     //カリキュラム参考
     public function update(Request $request)
     {
+
         $id = $request->input('id');
+
         $up_post = $request->input('up_post');
         \DB::table('posts')
             ->where('id', $id)
@@ -48,18 +50,5 @@ class PostsController extends Controller
             ->delete();
 
         return redirect('/top');
-    }
-    //作成した投稿を保存
-    public function store(Request $request)
-    {
-        // dd($request);
-        // インスタンスを作成
-        $post = new Post;
-
-        //postを代入
-        $post->post = $request->post;
-        $post->user_id = Auth::id();
-        $post->save();
-        return redirect('posts.index', ['post' => $post]);
     }
 }
