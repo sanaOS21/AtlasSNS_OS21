@@ -51,4 +51,17 @@ class PostsController extends Controller
 
         return redirect('/top');
     }
+
+    public function store(Request $request)
+    {
+        // dd($request);
+        // インスタンスを作成
+        $post = new Post;
+
+        //postを代入
+        $post->post = $request->post;
+        $post->user_id = Auth::id();
+        $post->save();
+        return redirect('posts.index', ['post' => $post]);
+    }
 }

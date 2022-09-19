@@ -5,12 +5,13 @@ namespace App\Http\Controllers;
 use App\User;
 use Illuminate\Http\Request;
 
-
 class UsersController extends Controller
 {
     //
-    public function profile()
+    public function profile(Requeest $request)
     {
+        $user = Auth::user();
+        $user->username = $request->name;
         return view('users.profile');
     }
     public function search(Request $request)
