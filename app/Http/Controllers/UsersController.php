@@ -35,12 +35,13 @@ class UsersController extends Controller
         $bio = $request->input('bio');
         \DB::table('users')
             ->where('id', $id)
-            ->update([
-                'username' => $username,
-                'mail' => $mail,
-                'password' => $password,
-                'bio' => $bio,
-            ]);
+            ->update(
+                ['username' => $username],
+                ['mail' => $mail],
+                ['password' => $password],
+                ['bio' => $bio],
+            );
+        return redirect('profile');
     }
 
     public function search(Request $request)

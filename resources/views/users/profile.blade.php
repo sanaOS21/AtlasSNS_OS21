@@ -3,7 +3,7 @@
 @section('content')
 
 
-{!! Form::open(['url' => ['/profile/{id}/update'],'method' => 'put']) !!}
+{!! Form::open(['url' => ['/profile/{id}/update'],'method' => 'post']) !!}
 {!! Form::hidden('id',$auth->id) !!}
 
 <p>{{ Form::label('username','user name')}}</p>
