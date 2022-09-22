@@ -23,41 +23,43 @@
 Auth::routes();
 
 //①ログアウト中のページ
-//ログイン画面
-Route::get('/login', 'Auth\LoginController@login');
-Route::post('/login', 'Auth\LoginController@login');
-Route::get('/logout', 'Auth\LoginController@logout');
-//新規登録画面
-Route::get('/register', 'Auth\RegisterController@register');
-Route::post('/register', 'Auth\RegisterController@register');
-//下記追加
-Route::get('/added', 'Auth\RegisterController@added')->name('auth.added');
-Route::post('/added', 'Auth\RegisterController@added');
-
+Route::group(['middleware' => 'guest'], function () {
+  //ログイン画面
+  Route::get('/login', 'Auth\LoginController@login')->name('login');
+  Route::post('/login', 'Auth\LoginController@login');
+  Route::get('/logout', 'Auth\LoginController@logout');
+  //新規登録画面
+  Route::get('/register', 'Auth\RegisterController@register');
+  Route::post('/register', 'Auth\RegisterController@register');
+  //下記追加
+  Route::get('/added', 'Auth\RegisterController@added')->name('auth.added');
+  Route::post('/added', 'Auth\RegisterController@added');
+});
 //②ログイン中のページ
 
 //topページの表示
-// Route::group(['middleware' => "auth"], function () {
-Route::get('/top', 'PostsController@index');
-//投稿機能
-Route::post('/post-create', 'PostsController@create');
 
-//投稿更新
-Route::post('posts/update', 'PostsController@update');
+Route::group(['middleware' => "auth"], function () {
+  Route::get('/top', 'PostsController@index');
+  //投稿機能
+  Route::post('/post-create', 'PostsController@create');
+
+  //投稿更新
+  Route::post('posts/update', 'PostsController@update');
 
 
-//削除機能(削除はget)
-Route::get('/top/{id}/delete', 'PostsController@delete');
-//投稿削除機能
-Route::post('post/update', 'PostsController@update');
+  //削除機能(削除はget)
+  Route::get('/top/{id}/delete', 'PostsController@delete');
+  //投稿削除機能
+  Route::post('post/update', 'PostsController@update');
 
-Route::get('/profile', 'UsersController@profile');
-//プロフィール編集機能
-Route::post('/profile/{id}/update', 'UsersController@update');
+  Route::get('/profile', 'UsersController@profile');
+  //プロフィール編集機能
+  Route::post('/profile', 'UsersController@update');
 
-Route::get('/search', 'UsersController@search');
+  Route::get('/search', 'UsersController@search');
 
-Route::get('/follow-list', 'PostsController@index');
-Route::get('/follower-list', 'PostsController@index');
-// });
+  Route::get('/follow-list', 'PostsController@index');
+  Route::get('/follower-list', 'PostsController@index');
+});
 //
