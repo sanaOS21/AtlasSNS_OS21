@@ -24,8 +24,9 @@
 
 <p>{{ Form::label('icon image','icon image')}}</p>
 
+{{Form::submit('更新')}}
 
-
+{!! Form::close() !!}
 
 
 @endsection

@@ -30,7 +30,7 @@ class UsersController extends Controller
     {
         $id = $request->input('id');
         $username = $request->input('username');
-        $mail = $request->input('username');
+        $mail = $request->input('mail');
         $password = $request->input('password');
         $bio = $request->input('bio');
         \DB::table('users')
@@ -38,7 +38,7 @@ class UsersController extends Controller
             ->update(
                 ['username' => $username],
                 ['mail' => $mail],
-                ['password' => $password],
+                ['password' => bcrypt($password)],
                 ['bio' => $bio],
             );
         return redirect('profile');

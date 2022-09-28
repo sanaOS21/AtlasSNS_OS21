@@ -30,17 +30,14 @@
                     <p>○○さん
                         <img src=" images/arrow.png">
                     </p>
-                    <div class="header-list">
-                        <ul id="accordion" class="accordion">
-                            <li>
-                                <a href="#" class="menu_bottom">menu</a>
-                                <ul class="submenu">
-                                    <li><a href="/top">HOME</a></li>
-                                    <li><a href="/profile">プロフィール編集</a></li>
-                                    <li><a href="/logout">ログアウト</a></li>
-                                </ul>
-                    </div>
+
+                    <ul class="accordion">
+                        <li class="accordion-ul"><a href="/top">HOME</a></li>
+                        <li class="accordion-ul"><a href="/profile">プロフィール編集</a></li>
+                        <li class="accordion-ul"><a href="/logout">ログアウト</a></li>
+                    </ul>
                 </div>
+            </div>
     </header>
     <div id="row">
         <div id="container">
