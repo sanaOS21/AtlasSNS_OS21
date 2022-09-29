@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\User;
+use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Auth;
 
@@ -26,23 +27,43 @@ class UsersController extends Controller
     }
 
     // PostsController@updateのまんま↓
-    public function update(Request $request)
+    public function update(Request $request, User $user)
     {
-        $id = $request->input('id');
-        $username = $request->input('username');
-        $mail = $request->input('mail');
-        $password = $request->input('password');
-        $bio = $request->input('bio');
-        \DB::table('users')
-            ->where('id', $id)
-            ->update(
-                ['username' => $username],
-                ['mail' => $mail],
-                ['password' => bcrypt($password)],
-                ['bio' => $bio],
-            );
+
+        $auth = Auth::user();
+        $auth->id = $request->input('id');
+        $auth->username = $request->input('username');
+        $auth->mail = $request->input('mail');
+        //bcrypt ググる　画像のはめ方もググる
+        $auth->password = bcrypt($request->input('password'));
+        $auth->bio = $request->input('bio');
+
+        //多分効いていない
+        $validate = [
+            'username' => 'required|string|min:2|max:12',
+            'mail' => 'required|string|email|min:5|max:40',
+            'password' => 'required|string|min:8|max:20|confirmed',
+            'bio' => 'max:150',
+            'images' => 'file|mimes:png,jpg,bmp,gif,svg',
+        ];
+        $this->validate($request, $validate);
+
+        //更新できてないから↓で保存されていない...
+        $auth->save();
         return redirect('profile');
     }
+    //
+
+    // \DB::table('users')
+    //     ->where('id', $id)
+    //     ->update(
+    //         ['username' => $username],
+    //         ['mail' => $mail],
+    //         ['password' => bcrypt($password)],
+    //         ['bio' => $bio],
+    //     );
+    // return redirect('profile');
+    // }
 
     public function search(Request $request)
     {

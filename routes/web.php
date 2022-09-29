@@ -55,7 +55,7 @@ Route::group(['middleware' => "auth"], function () {
 
   Route::get('/profile', 'UsersController@profile');
   //プロフィール編集機能
-  Route::post('/profile', 'UsersController@update');
+  Route::put('/profile', 'UsersController@update');
 
   Route::get('/search', 'UsersController@search');
 

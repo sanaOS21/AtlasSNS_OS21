@@ -57,7 +57,7 @@ header {
 
 /*モーダル記述　ここまで */
 
-/*ハンバーガーメニュー ここから*/
+/* ハンバーガーメニュー ここから
 .accordion {
     width: 260px;
     padding: 15px;
@@ -71,17 +71,17 @@ header {
 }
 
 /* クローズ時 */
-.accordion::before {
+/* .accordion::before {
     /* 閉じている時 */
-    content: "∧";
+/* content: "∧";
     position: absolute;
     left: 150px;
 }
 
 /* オープン */
-.accordion.is-active::before {
-    content: "v";
-}
+/* .accordion.is-active::before { */
+/* content: "v";  */
+/* }
 
 .accordion-ul {
     text-align: center;
@@ -93,6 +93,6 @@ header {
 .accordion-ul a {
     color: #3e3e3e;
     font-size: 20px;
-}
+} */
 
 /*ハンバーガーメニュー ここまで*/
