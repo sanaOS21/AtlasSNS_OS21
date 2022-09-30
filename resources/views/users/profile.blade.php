@@ -16,13 +16,14 @@
 <p>{{ Form::text('password',$auth->password,['class' => 'input'])}}</p>
 
 <p>{{ Form::label('password_confirm','password confirm')}}</p>
-<p>{{ Form::text('password_confirm',$auth->password_confirm,['class' => 'input'])}}</p>
+<p>{{ Form::text('password_confirm',$auth->password,['class' => 'input'])}}</p>
 
 <p>{{ Form::label('bio','bio')}}</p>
 <p>{{ Form::text('bio',$auth->bio,['class' => 'input'])}}</p>
 
 
 <p>{{ Form::label('icon image','icon image')}}</p>
+<input class="images" id="images" name="images" type="file" value="$auth->images">
 
 {{Form::submit('更新')}}
 

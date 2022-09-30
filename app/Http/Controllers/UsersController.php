@@ -29,24 +29,30 @@ class UsersController extends Controller
     // PostsController@updateのまんま↓
     public function update(Request $request, User $user)
     {
-
-        $auth = Auth::user();
-        $auth->id = $request->input('id');
-        $auth->username = $request->input('username');
-        $auth->mail = $request->input('mail');
-        //bcrypt ググる　画像のはめ方もググる
-        $auth->password = bcrypt($request->input('password'));
-        $auth->bio = $request->input('bio');
-
         //多分効いていない
-        $validate = [
+        $request->validate = [
             'username' => 'required|string|min:2|max:12',
             'mail' => 'required|string|email|min:5|max:40',
             'password' => 'required|string|min:8|max:20|confirmed',
             'bio' => 'max:150',
             'images' => 'file|mimes:png,jpg,bmp,gif,svg',
         ];
-        $this->validate($request, $validate);
+
+
+        $auth = Auth::user();
+        //画像ファイルのパス
+        $user->images = $request->images->store('public/images');
+
+        $auth->id = $request->input('id');
+        $auth->username = $request->input('username');
+        $auth->mail = $request->input('mail');
+        //bcrypt ググる　画像のはめ方もググる
+        $auth->password = bcrypt($request->input('password'));
+        $auth->bio = $request->input('bio');
+        $auth->images = str_replace('public/', 'storage/', $images);
+
+
+        // $this->validate($request, "validate");
 
         //更新できてないから↓で保存されていない...
         $auth->save();

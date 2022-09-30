@@ -27,7 +27,8 @@
             <h1><a href="http://127.0.0.1:8000/top"><img src="images/logo.png"></a></h1>
             <div id="">
                 <div id="">
-                    <p>○○さん
+                    <!-- ユーザ名表示 -->
+                    <p>{{ Auth::user()->username}}さん
                         <img src=" images/arrow.png">
                     </p>
 
@@ -45,7 +46,7 @@
         </div>
         <div id="side-bar">
             <div id="confirm">
-                <p>〇〇さんの</p>
+                <p>{{ Auth::user()->username}}さん</p>
                 <div>
                     <p>フォロー数</p>
                     <p>〇〇名</p>
