@@ -10,7 +10,6 @@ use Auth;
 
 class UsersController extends Controller
 {
-    //
     public function profile()
     {
         //認証済みのユーザ取得
@@ -29,47 +28,43 @@ class UsersController extends Controller
     // PostsController@updateのまんま↓
     public function update(Request $request, User $user)
     {
-        //多分効いていない
-        $request->validate = [
-            'username' => 'required|string|min:2|max:12',
-            'mail' => 'required|string|email|min:5|max:40',
-            'password' => 'required|string|min:8|max:20|confirmed',
-            'bio' => 'max:150',
-            'images' => 'file|mimes:png,jpg,bmp,gif,svg',
-        ];
-
-
         $auth = Auth::user();
-        //画像ファイルのパス
-        $user->images = $request->images->store('public/images');
-
         $auth->id = $request->input('id');
         $auth->username = $request->input('username');
         $auth->mail = $request->input('mail');
-        //bcrypt ググる　画像のはめ方もググる
+        //bcrypt...値（パス）が一致しているかを確認（よくわからない）
         $auth->password = bcrypt($request->input('password'));
         $auth->bio = $request->input('bio');
-        $auth->images = str_replace('public/', 'storage/', $images);
+        $image = $request->input('images');
 
+        // 画像のアップ方法
+        // 画像がセットされれば保存処理を実行
+        if (isset($request->images)) {
 
-        // $this->validate($request, "validate");
+            //バリデーション
+            $this->validate($request, [
+                'images' =>
+                'file|mimes:png,jpg,bmp,gif,svg',
+            ]);
+            // $rules_images = ['images' => 'file|mimes:png,jpg,bmp,gif,svg',];
+            //public/imagesに画像を保存
+            $image = $request->images->store('public/images');
 
-        //更新できてないから↓で保存されていない...
+            // $this->validate($request, $rules_images);
+        }
+        $rules = [
+            'username' => 'required|string|min:2|max:12',
+            'mail' => 'required|string|email|min:5|max:40',
+            'password' => 'required|string|min:8|max:20|confirmed',
+            'password_confirmation' => 'required',
+            'bio' => 'max:150',
+            // 'images' => 'file|mimes:png,jpg,bmp,gif,svg',
+        ];
+        $this->validate($request, $rules);
         $auth->save();
         return redirect('profile');
     }
-    //
 
-    // \DB::table('users')
-    //     ->where('id', $id)
-    //     ->update(
-    //         ['username' => $username],
-    //         ['mail' => $mail],
-    //         ['password' => bcrypt($password)],
-    //         ['bio' => $bio],
-    //     );
-    // return redirect('profile');
-    // }
 
     public function search(Request $request)
     {
@@ -78,10 +73,14 @@ class UsersController extends Controller
 
         if (!empty($search)) {
             $query->where('username', 'LIKE', "%{$search}%");
+            $request->session()->put('search', '検索ワード：' . $search);
+        } else {
+            \Session::forget('search');
+            $users = User::all();
         }
         $users = $query->get();
         // 検索ワード表示
-        $request->session()->put('search', $search);
+
 
         return view('users.search', compact('users', 'search'));
     }

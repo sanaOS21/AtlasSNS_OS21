@@ -7,7 +7,7 @@
     <input type="submit" value="虫眼鏡">
     <i class="fa fa-search"></i>
     <!-- 検索ワード表示 -->
-    <p>検索ワード：{{ session('search')}}</p>
+    <p>{{ session('search')}}</p>
   </form>
 </div>
 
