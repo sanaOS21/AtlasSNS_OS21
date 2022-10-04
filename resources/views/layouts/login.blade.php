@@ -26,16 +26,17 @@
         <div id="head">
             <h1><a href="http://127.0.0.1:8000/top"><img src="images/logo.png"></a></h1>
             <div id="">
-                <div id="">
-                    <!-- ユーザ名表示 -->
-                    <p>{{ Auth::user()->username}}さん
-                        <img src=" images/arrow.png">
-                    </p>
 
-                    <ul class="accordion">
-                        <li class="accordion-ul"><a href="/top">HOME</a></li>
-                        <li class="accordion-ul"><a href="/profile">プロフィール編集</a></li>
-                        <li class="accordion-ul"><a href="/logout">ログアウト</a></li>
+                <!-- ユーザ名表示 -->
+                <p>{{ Auth::user()->username}}さん
+                    <img src=" images/arrow.png">
+                </p>
+                <div class="gnavi__wrap">
+                    <ul class="gnavi__lists">
+                        <li class="gnavi__list"><a href="/top">HOME</a></li>
+                        <li class="gnavi__list"><a href="/profile">プロフィール編集</a></li>
+                        <li class="gnavi__list"><a href="/logout">ログアウト</a></li>
+                        </li>
                     </ul>
                 </div>
             </div>

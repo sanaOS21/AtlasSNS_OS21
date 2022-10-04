@@ -56,43 +56,11 @@ header {
 }
 
 /*モーダル記述　ここまで */
-
-/* ハンバーガーメニュー ここから
-.accordion {
-    width: 260px;
-    padding: 15px;
-    color: #fff;
-    font-size: 20px;
-    position: relative;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* クローズ時 */
-/* .accordion::before {
-    /* 閉じている時 */
-/* content: "∧";
+.dropdown__lists {
+    display: none;
+    /*デフォルトでは非表示の状態にしておく*/
+    width: 100%;
     position: absolute;
-    left: 150px;
+    top: 60px;
+    left: 0;
 }
-
-/* オープン */
-/* .accordion.is-active::before { */
-/* content: "v";  */
-/* }
-
-.accordion-ul {
-    text-align: center;
-    background: #fff;
-    height: 50px;
-    padding-top: 30px;
-}
-
-.accordion-ul a {
-    color: #3e3e3e;
-    font-size: 20px;
-} */
-
-/*ハンバーガーメニュー ここまで*/
