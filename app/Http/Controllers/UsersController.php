@@ -40,16 +40,16 @@ class UsersController extends Controller
         // 画像のアップ方法
         // 画像がセットされれば保存処理を実行
         // ーーー下記コメントアウトーーー
-        // if (isset($request->images)) {
+        if (isset($request->images)) {
 
-        //     //バリデーション
-        //     $this->validate($request, [
-        //         'images' =>
-        //         'file|mimes:png,jpg,bmp,gif,svg',
-        //     ]);
+            //バリデーション
+            $this->validate($request, [
+                'images' =>
+                'file|mimes:png,jpg,bmp,gif,svg',
+            ]);
 
-        //     $image = $request->images->store('public/images');
-        // }
+            $image = $request->images->store('public/images');
+        }
         // ーーーーーー
 
 
@@ -59,7 +59,7 @@ class UsersController extends Controller
             'password' => 'required|string|min:8|max:20|confirmed',
             'password_confirmation' => 'required',
             'bio' => 'max:150',
-            'images' => 'file|mimes:png,jpg,bmp,gif,svg',
+            // 'images' => 'file|mimes:png,jpg,bmp,gif,svg',
         ];
         $this->validate($request, $rules);
         $auth->save();

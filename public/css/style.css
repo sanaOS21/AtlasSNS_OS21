@@ -56,11 +56,31 @@ header {
 }
 
 /*モーダル記述　ここまで */
-.dropdown__lists {
-    display: none;
-    /*デフォルトでは非表示の状態にしておく*/
-    width: 100%;
-    position: absolute;
-    top: 60px;
-    left: 0;
+/* .menu li {
+    position: relative;
+    float: left;
 }
+
+.menu li a {
+    display: block;
+    width: 220px;
+    padding: 10px;
+    webkit-transition-duration: 0.3s;
+    -moz-transition-duration: 0.3s;
+    transition-duration: 0.3s;
+}
+
+.menu li a:hover {
+    background: #dbdbdb;
+}
+
+.menu li:hover>ul {
+    display: block;
+}
+
+.menu ul {
+    display: none;
+    position: absolute;
+    top: 38px;
+    width: 240px;
+} */

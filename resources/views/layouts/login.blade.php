@@ -31,14 +31,15 @@
                 <p>{{ Auth::user()->username}}さん
                     <img src=" images/arrow.png">
                 </p>
-                <div class="gnavi__wrap">
-                    <ul class="gnavi__lists">
-                        <li class="gnavi__list"><a href="/top">HOME</a></li>
-                        <li class="gnavi__list"><a href="/profile">プロフィール編集</a></li>
-                        <li class="gnavi__list"><a href="/logout">ログアウト</a></li>
-                        </li>
+
+                <ul class="menu">
+                    <li>メニュー</li>
+                    <ul>
+                        <li><a href="/top">HOME</a></li>
+                        <li><a href="/profile">プロフィール編集</a></li>
+                        <li><a href="/logout">ログアウト</a></li>
                     </ul>
-                </div>
+                </ul>
             </div>
     </header>
     <div id="row">
