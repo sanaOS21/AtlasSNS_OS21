@@ -7,13 +7,12 @@
 <li>{{$error}}</li>
 @endforeach
 @endif
-{!! Form::open(['url' => ['/profile'],'method' => 'PUT']) !!}
-{!! Form::hidden('id',$auth->id) !!}
+{!! Form::open(['url' => '/profile','files'=>true]) !!}
 
 <p>{{ Form::label('username','user name')}}</p>
 <p>{{ Form::text('username',$auth->username,['class' => 'input'])}}</p>
 
-<p>{{ Form::label('e-mail','mail adress')}}</p>
+<p>{{ Form::label('e-mail','mail address')}}</p>
 <p>{{ Form::text('mail',$auth->mail,['class' => 'input'])}}</p>
 
 <p>{{ Form::label('password','password')}}</p>

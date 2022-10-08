@@ -24,12 +24,12 @@
 <body>
     <header>
         <div id="head">
-            <h1><a href="http://127.0.0.1:8000/top"><img src="images/logo.png"></a></h1>
+            <h1><a href="/top"><img src="images/logo.png"></a></h1>
             <div id="">
 
                 <!-- ユーザ名表示 -->
                 <p>{{ Auth::user()->username}}さん
-                    <img src=" images/arrow.png">
+                    <img src="{{ asset('storage/images/' . Auth::user()->images) }}">
                 </p>
 
                 <ul class="menu">

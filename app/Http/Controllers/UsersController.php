@@ -26,16 +26,32 @@ class UsersController extends Controller
     }
 
     // PostsController@updateのまんま↓
-    public function update(Request $request, User $user)
+    public function update(Request $request)
     {
+
+
+        // バリデーション
+        $validator = Validator::make($request->all(), [
+            'username' => 'required|string|min:2|max:12',
+            'mail' => 'required|string|email|min:5|max:40',
+            'password' => 'required|string|min:8|max:20|confirmed',
+            'password_confirmation' => 'required',
+            'bio' => 'max:150',
+        ]);
+
+        if ($validator->fails()) {
+            return redirect('/profile')
+                ->withErrors($validator)
+                ->withInput();
+        }
         $auth = Auth::user();
-        $auth->id = $request->input('id');
         $auth->username = $request->input('username');
         $auth->mail = $request->input('mail');
         //bcrypt...値（パス）が一致しているかを確認（よくわからない）
         $auth->password = bcrypt($request->input('password'));
         $auth->bio = $request->input('bio');
-        $image = $request->input('images');
+        $image = $request->file('images');
+
 
         // 画像のアップ方法
         // 画像がセットされれば保存処理を実行
@@ -43,26 +59,19 @@ class UsersController extends Controller
         if (isset($request->images)) {
 
             //バリデーション
-            $this->validate($request, [
+            $request->validate([
                 'images' =>
-                'file|mimes:png,jpg,bmp,gif,svg',
+                'file|image|mimes:png,jpg,bmp,gif,svg',
             ]);
-
-            $image = $request->images->store('public/images');
+            $image_path = $image->store('public/images');
+            $auth->images = basename($image_path);
         }
         // ーーーーーー
 
 
-        $rules = [
-            'username' => 'required|string|min:2|max:12',
-            'mail' => 'required|string|email|min:5|max:40',
-            'password' => 'required|string|min:8|max:20|confirmed',
-            'password_confirmation' => 'required',
-            'bio' => 'max:150',
-            // 'images' => 'file|mimes:png,jpg,bmp,gif,svg',
-        ];
-        $this->validate($request, $rules);
-        $auth->save();
+
+
+        $auth->update();
         return redirect('profile');
     }
 
