@@ -57,9 +57,12 @@ Route::group(['middleware' => "auth"], function () {
   //プロフィール編集機能
   Route::post('/profile', 'UsersController@update');
 
+  // ユーザー検索
   Route::get('/search', 'UsersController@search');
 
-  Route::get('/follow-list', 'PostsController@index');
-  Route::get('/follower-list', 'PostsController@index');
+  // フォローリスト（個→多）
+  Route::get('/follow-list', 'FollowsController@followList');
+  // フォロワーリスト（多→個）
+  Route::get('/follower-list', 'FollowsController@followerList');
 });
 //
