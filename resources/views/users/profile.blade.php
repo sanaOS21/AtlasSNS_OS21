@@ -16,20 +16,20 @@
 <p>{{ Form::text('mail',$auth->mail,['class' => 'input'])}}</p>
 
 <p>{{ Form::label('password','password')}}</p>
-<p>{{ Form::text('password', null)}}</p>
+<p>{{ Form::text('password', null,['class' => 'input'])}}</p>
 
 <p>{{ Form::label('password_confirm','password confirm')}}</p>
-<p>{{ Form::text('password_confirmation',null)}}</p>
+<p>{{ Form::text('password_confirmation',null,['class' => 'input'])}}</p>
 
 <p>{{ Form::label('bio','bio')}}</p>
 <p>{{ Form::text('bio',$auth->bio,['class' => 'input'])}}</p>
 
-
 <p>{{ Form::label('icon image','icon image')}}</p>
-<p>{{ Form::file('images',['class'=>'images'])}}</p>
+<div class="images-label">
+  <p>{{ Form::file('images',['class'=>'images'])}}</p>
+</div>
 
-
-{{Form::submit('更新')}}
+{{Form::submit('更新',['class' => 'profile-submit'])}}
 
 {!! Form::close() !!}
 

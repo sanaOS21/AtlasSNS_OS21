@@ -6,15 +6,17 @@
 <form method="post" action="/post-create">
   @csrf
 
-  <div class="main">
-    <input type="text" class="form" name="post" placeholder="投稿内容を入力してください">
-    <input type="submit" class="btn btn-primary" value="飛行機">
+  <div class="form-group">
+    <input type="text" class="post-input" name="post" placeholder="投稿内容を入力してください">
+    <button type="submit" class="post-submit">
+      <img src="{{ asset('images/post.png')}}">
+    </button>
 
   </div>
 </form>
 
 
-<div class=card-body>
+<div class="post-contents">
   @foreach($posts as $post)
   <div class="tweet-area">
     <tr>
@@ -28,13 +30,17 @@
       </p>
       <!-- 編集ボタン 参考サイトのまんま-->
       <td>
-        <div class="content">
-          <a class="js-modal-open" href="" post="{{$post->post}}" post_id="{{ $post->id }}">編集</a>
+        <div class=" content">
+          <a class="js-modal-open" href="" post="{{$post->post}}" post_id="{{ $post->id }}">
+            <img src="{{asset('images/edit.png')}}" alt="">
+          </a>
         </div>
       </td>
 
       <!-- 削除ボタン -->
-      <td><a href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか')">削除</a>
+      <td><a class="trash" href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか')">
+          <img src="{{asset('images/trash-h.png')}}" alt="">
+        </a>
       </td>
       </tda>
     </tr>
@@ -46,7 +52,7 @@
         <form action="post/update" method="post">
           <textarea class="modal_post" name="up_post"></textarea>
           <input type="hidden" name="id" class="modal_id" value="{{$post->id}}">
-          <input type="submit" value="更新">
+          <input class="up-submit" type="submit" value="更新" src="{{asset('images/edit.png')}}">
           {{csrf_field()}}
         </form>
         <a class="js-modal-close" href="">閉じる</a>

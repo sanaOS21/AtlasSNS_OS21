@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use phpDocumentor\Reflection\Types\Boolean;
 
 class User extends Authenticatable
 {
@@ -33,20 +34,50 @@ class User extends Authenticatable
     // {
     //     return $this->hasMany('App\Post');
     // }
-
-    // フォロワー→フォロー
-    public function followUsers()
-    {
-        // 第一引数...使用するモデル
-        // 第二引数...使用するテーブル名
-        // 第三引数...リレーションを定義している外部のキー名
-        // 第四引数...結合するモデルの外部キー名
-        // followed_id...相手のユーザ、following_id...自分のユーザ
-        return $this->belongsToMany('App\User', 'follow_users', 'followed_id', 'following_id');
-    }
-    // フォロー→フォロワー
+    // ユーザがフォローしている人を取得
     public function follows()
     {
-        return $this->belongsToMany('App\User', 'follow_users', 'following_id', 'followed_id');
+        return $this->belongsToMany(User::class, 'follows', 'following_id', 'followed_id')->withTimestamps();
     }
+
+
+    //ユーザをフォローされている人を取得
+    public function followers()
+    {
+        return $this->belongsToMany(User::class, 'follows', 'followed_id', 'following_id')->withTimestamps();
+    }
+
+    public function follow(Int $user_id)
+    {
+        return $this->follows()->attach($user_id);
+    }
+
+    // フォロー解除する
+    public function unfollow(Int $user_id)
+    {
+        return $this->follows()->detach($user_id);
+    }
+
+    // フォローしているか
+    public function isFollowing(Int $user_id)
+    {
+        return (bool) $this->follows()->where('followed_id', $user_id)->first(['follows.id']);
+    }
+
+    // フォローされているか
+    public function isFollowed(Int $user_id)
+    {
+        return (bool) $this->followers()->where('following_id', $user_id)->first(['follows.id']);
+    }
+
+    //
+    // public function getFollowCount($user_id)
+    // {
+    //     return $this->where('following_id', $user_id)->count();
+    // }
+
+    // public function getFollowerCount($user_id)
+    // {
+    //     return $this->where('followed_id', $user_id)->count();
+    // }
 }

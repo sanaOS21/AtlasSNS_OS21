@@ -27,7 +27,7 @@ Route::group(['middleware' => 'guest'], function () {
   //ログイン画面
   Route::get('/login', 'Auth\LoginController@login')->name('login');
   Route::post('/login', 'Auth\LoginController@login');
-  Route::get('/logout', 'Auth\LoginController@logout');
+
   //新規登録画面
   Route::get('/register', 'Auth\RegisterController@register');
   Route::post('/register', 'Auth\RegisterController@register');
@@ -40,14 +40,14 @@ Route::group(['middleware' => 'guest'], function () {
 //topページの表示
 
 Route::group(['middleware' => "auth"], function () {
+  // ログアウト
+  Route::get('/logout', 'Auth\LoginController@logout');
+
   Route::get('/top', 'PostsController@index');
   //投稿機能
   Route::post('/post-create', 'PostsController@create');
-
   //投稿更新
   Route::post('posts/update', 'PostsController@update');
-
-
   //削除機能(削除はget)
   Route::get('/top/{id}/delete', 'PostsController@delete');
   //投稿削除機能
@@ -64,5 +64,16 @@ Route::group(['middleware' => "auth"], function () {
   Route::get('/follow-list', 'FollowsController@followList');
   // フォロワーリスト（多→個）
   Route::get('/follower-list', 'FollowsController@followerList');
+
+  Route::post('/follow_create', 'UsersController@follow_create');
+  Route::get('/top/{id}/delete', 'UsersController@delete');
+  //投稿削除機能
+  Route::post('post/update', 'UsersController@update');
+  // フォロー
+  Route::get('/search/{id}/follow', 'FollowsController@follow');
+  // フォロー解除
+  Route::get('/search/{id}/unfollow', 'FollowsController@unfollow');
+  // 他ユーザのプロフィール表示
+  Route::get('/{id}/profile', 'UsersController@usersprofile');
 });
 //

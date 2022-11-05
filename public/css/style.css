@@ -9,22 +9,22 @@ header {
     background: #186AC9;
 }
 
-/* main content */
-#row {
+/* 【topのヘッダー】 */
+/* topのヘッダー（青部分）　範囲指定 */
+#head {
     display: flex;
-    flex-flow: row wrap;
+    justify-content: space-between;
+    align-items: center;
+    height: 70px;
 }
 
-#container {
-    flex: 0 0 80%;
+/* Atlasロゴのサイズ */
+.head-images {
+    width: 80px;
+    padding-left: 20px;
 }
 
-#side-bar {
-    flex: 0 0 19%;
-    border-left: 1px solid #727272;
-}
-
-/*モーダル記述　ここから */
+/*【モーダル記述】 */
 .content {
     margin: 0 auto;
     padding: 40px;
@@ -55,32 +55,408 @@ header {
     width: 60%;
 }
 
-/*モーダル記述　ここまで */
-/* .menu li {
+.textbox {
+    width: 650px;
+    height: 210px;
+    margin: 0 auto;
+
     position: relative;
-    float: left;
 }
 
-.menu li a {
+.modal_post {
+
+    width: 650px;
+    height: 200px;
+}
+
+.up-submit {
     display: block;
-    width: 220px;
-    padding: 10px;
-    webkit-transition-duration: 0.3s;
-    -moz-transition-duration: 0.3s;
-    transition-duration: 0.3s;
+    width: 40px;
+    margin-left: auto;
 }
 
-.menu li a:hover {
-    background: #dbdbdb;
-}
-
-.menu li:hover>ul {
-    display: block;
-}
-
-.menu ul {
-    display: none;
+.js-modal-close {
     position: absolute;
-    top: 38px;
-    width: 240px;
-} */
+    bottom: 10px;
+
+    color: #000;
+    font-weight: bold;
+}
+
+
+
+
+
+
+
+/* main content */
+
+#row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#container {
+    flex: 0 0 80%;
+}
+
+#side-bar {
+    flex: 0 0 19%;
+    border-left: 1px solid #727272;
+}
+
+#headAccordion {
+    position: relative;
+}
+
+/* username,icon 間隔 */
+.atlas-accordion {
+    width: 260px;
+    padding: 15px;
+    color: #fff;
+    font-size: 20px;
+    position: relative;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 閉じている時 */
+.atlas-accordion::before {
+    content: "∧";
+    position: absolute;
+    left: 150px;
+}
+
+/* 開いている時 */
+.atlas-accordion.is-active::before {
+    content: "v";
+}
+
+/* アコーディオンメニュー内 */
+.atlas-accordion-ul {
+    display: none;
+    border: 2px solid #000;
+
+    width: 180px;
+
+    position: absolute;
+    top: 70px;
+    right: 0px;
+    z-index: 10;
+}
+
+.atlas-accordion-ul.is-active {
+    display: block;
+}
+
+.atlas-accordion-li {
+    text-align: center;
+    background: #fff;
+    height: 30px;
+    padding-top: 30px;
+}
+
+.atlas-accordion-li a {
+    color: #3e3e3e;
+    font-size: 20px;
+}
+
+.atlas-accordion-middle {
+    text-align: center;
+    background: rgb(39, 17, 233);
+    height: 30px;
+    padding-top: 30px;
+}
+
+.atlas-accordion-middle a {
+    color: #fff;
+    font-size: 20px;
+}
+
+/* アイコン */
+.logo {
+    width: 100%;
+    max-width: 50px;
+}
+
+/* サイドバー */
+#confirm {
+    padding: 20px;
+    border-bottom: 1px solid #727272;
+}
+
+.side-followlist {
+    display: flex;
+    margin-top: 20px;
+}
+
+.side-followlist p:nth-child(2) {
+    margin-left: 50px;
+}
+
+.list-btn {
+    margin-top: 25px;
+    margin-left: 100px;
+    background: rgb(39, 17, 233);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+}
+
+.list-btn a {
+    font-size: 12px;
+    color: #fff;
+}
+
+.side-search {
+    background: rgb(39, 17, 233);
+    border-radius: 5px;
+    padding: 10px;
+    text-align: center;
+    width: 150px;
+    margin: 25px auto;
+}
+
+.side-search a {
+    font-size: 12px;
+    color: #fff;
+    font-weight: bold;
+}
+
+.js-modal-open img {
+    width: 40px;
+}
+
+
+.trash img {
+    max-width: 50px;
+    width: 100%;
+}
+
+
+
+/* ログイン画面 */
+.header-top {
+    text-align: center;
+}
+
+.header-boxs {
+    padding-top: 250px;
+}
+
+.header-boxs img {
+    width: 100px;
+}
+
+.header-boxs p {
+    color: #fff;
+    padding-bottom: 40px;
+    font-size: 20px;
+}
+
+
+
+.login-contents {
+    position: relative;
+    height: 60vh;
+    background: linear-gradient(#186AC9 1%, #05FBFF, #b8eb48, #ebd848);
+}
+
+.login-box {
+    width: 200px;
+    padding: 10px;
+    border-radius: 10px;
+    background: rgba(35, 35, 35, 0.5);
+
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+.login-welcome {
+    padding: 10px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+
+.login-input-contents {
+    border: 1px solid #b8eb48;
+    padding: 10px;
+}
+
+.login-input-contents label {
+    color: #fff;
+    font-size: 10px;
+    display: block;
+    margin-top: 5px;
+}
+
+.login-input-contents input {
+
+    border: 1px solid #fff;
+    border-radius: 5px;
+    width: 150px;
+    margin-top: 5px;
+    height: 25px;
+
+}
+
+.login-submit {
+    background: #ef1d1d;
+    border: none;
+    color: #eaeaea;
+    padding: 5px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+.login-register {
+    text-align: center;
+    display: block;
+    padding: 20px;
+    color: #fff;
+    font-size: 12px;
+}
+
+.add-btn {
+    background: #ef1d1d;
+    border: none;
+    color: #eaeaea;
+    padding: 5px;
+    margin-top: 10px;
+    text-align: center;
+    display: block;
+    border-radius: 5px;
+    width: 75px;
+    height: 25px;
+    margin: 0 auto;
+}
+
+.add-btn a {
+    color: #eaeaea;
+    font-size: 10px;
+}
+
+/* 投稿ページ */
+.form-group {
+    display: flex;
+    align-items: center;
+    padding: 10px 50px 50px;
+    height: 100px;
+    border-bottom: 7px solid #727272;
+
+    position: relative;
+}
+
+.form-group .logo {
+    height: 50px;
+
+}
+
+.post-input {
+    border: none;
+    width: 200px;
+    margin-left: 30px;
+}
+
+.post-input::placeholder {
+    color: #dedddd;
+}
+
+
+.post-submit {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.post-submit img {
+    width: 90px;
+    height: 90px;
+    margin-left: 300px;
+
+    position: absolute;
+    bottom: 0;
+    right: 30px;
+}
+
+/* プロフィール編集画面 */
+.input {
+    width: 300px;
+    background: #e4e3e3;
+    border: 1px solid rgb(30, 30, 30);
+    height: 30px;
+}
+
+.input-images {
+    display: none;
+}
+
+.profile-submit {
+    width: 150px;
+    margin: 60px auto;
+    display: block;
+    height: 40px;
+    background: rgb(243, 60, 60);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+.images-label {
+    width: 300px;
+    background: #e4e3e3;
+    border: 1px solid rgb(30, 30, 30);
+    height: 80px;
+}
+
+/* ユーザ検索 */
+.search-input {
+    width: 250px;
+    height: 40px;
+    border-radius: 5px;
+    border: 1px solid #3e3e3e;
+}
+
+.search-submit {
+    width: auto;
+    padding: 0;
+    margin: 0;
+    background: none;
+    border: 0;
+    font-size: 0;
+    line-height: 0;
+    overflow: visible;
+    cursor: pointer;
+}
+
+.search-submit img {
+    width: 90px;
+    height: 90px;
+    margin-left: 40px;
+}
+
+.search-box {
+    width: 400px;
+    margin: 50px auto;
+}
+
+.search-table {
+    width: 400px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

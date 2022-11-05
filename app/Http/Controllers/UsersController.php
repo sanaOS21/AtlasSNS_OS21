@@ -6,6 +6,10 @@ use App\User;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Http\Request;
 use Auth;
+use App\Follow;
+use App\Post;
+use App\Http\Controllers\FollowsController;
+
 
 
 class UsersController extends Controller
@@ -28,8 +32,6 @@ class UsersController extends Controller
     // PostsController@updateのまんま↓
     public function update(Request $request)
     {
-
-
         // バリデーション
         $validator = Validator::make($request->all(), [
             'username' => 'required|string|min:2|max:12',
@@ -55,7 +57,6 @@ class UsersController extends Controller
 
         // 画像のアップ方法
         // 画像がセットされれば保存処理を実行
-        // ーーー下記コメントアウトーーー
         if (isset($request->images)) {
 
             //バリデーション
@@ -66,15 +67,9 @@ class UsersController extends Controller
             $image_path = $image->store('public/images');
             $auth->images = basename($image_path);
         }
-        // ーーーーーー
-
-
-
-
         $auth->update();
         return redirect('profile');
     }
-
 
     public function search(Request $request)
     {
@@ -89,9 +84,13 @@ class UsersController extends Controller
             $users = User::all();
         }
         $users = $query->get();
-        // 検索ワード表示
-
-
         return view('users.search', compact('users', 'search'));
+    }
+
+    public function usersprofile($id)
+    {
+        $user_id = User::find($id);
+        $userPost = Post::with('user')->whereIn('user_id', $user_id)->get();
+        return view('users.usersprofile', compact('user_id', 'userPost'));
     }
 }
