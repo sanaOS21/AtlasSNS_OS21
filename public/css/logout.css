@@ -1,10 +1,95 @@
 @charset "UTF-8";
 
-html{
+html {
     height: 100%;
 }
 
-body{
+body {
     height: 100%;
     background: #186AC9;
+}
+
+/* ログイン画面 */
+/* Atlasロゴsocialを中央に */
+.header-top {
+    text-align: center;
+}
+
+/* 位置決め */
+.header-boxs {
+    padding-top: 250px;
+}
+
+/* atlasロゴサイズ */
+.header-boxs img {
+    width: 100px;
+}
+
+
+/* 背景グラデーション */
+.login-contents {
+    position: relative;
+    height: 60vh;
+    background: linear-gradient(#186AC9, #5792d6, #92cf91, #ffcc33);
+}
+
+/* テキストエリア　全体を中央に*/
+.login-box {
+    width: 250px;
+    padding: 25px;
+    border-radius: 10px;
+    background: rgba(80, 80, 80, 0.3);
+
+    position: absolute;
+    top: 0%;
+    left: 50%;
+    transform: translate(-50%, 0%);
+}
+
+/* 「ようこそ」「ユーザー登録」エリア */
+.login-welcome {
+    padding: 10px;
+    color: #fff;
+    font-size: 12px;
+    text-align: center;
+}
+
+/* email,passを整える */
+.login-input-contents label {
+    color: #fff;
+    font-size: 10px;
+    display: block;
+    margin-top: 5px;
+}
+
+/* テキストボックスを整える */
+.login-input-contents input {
+
+    border: 1px solid #fff;
+    border-radius: 5px;
+    width: 200px;
+    margin-top: 5px;
+    height: 25px;
+}
+
+/* ログイン.登録ボタンを赤く */
+.login-submit {
+    background: #ef1d1d;
+    border: none;
+    color: #eaeaea;
+    padding: 5px 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: auto;
+    display: block;
+    border-radius: 5px;
+}
+
+/* 新規ユーザの方はこちら */
+.login-register {
+    text-align: center;
+    display: block;
+    padding: 20px;
+    color: #fff;
+    font-size: 12px;
 }

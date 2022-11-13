@@ -5,19 +5,19 @@ namespace App\Http\Controllers;
 use App\Post;
 use App\User;
 use Auth;
+use App\Follow;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth as FacadesAuth;
 
 class PostsController extends Controller
 {
     //TOPページの表示
     public function index()
     {
-        //全ての投稿を取得
-        //「latest()」（降順）だとorderByより短いらしい(⇔oleest()_昇順)0905
-        $posts = Post::latest()->get();
-        // $post = Post::get();
-        //compact...controllerから変数の受渡（可読性が高い）
-        return view('posts.index', compact('posts'));
+        $followList = Auth::user()->follows()->pluck('followed_id');
+        $followPost = Post::with('user')->whereIn('user_id', $followList)->orWhere('user_id', \Auth::user()->id)->latest()->get();
+
+        return view('posts.index', compact('followPost'));
     }
     //投稿機能
     public function create(Request $request)

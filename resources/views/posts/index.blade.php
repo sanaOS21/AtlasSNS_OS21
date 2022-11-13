@@ -7,6 +7,7 @@
   @csrf
 
   <div class="form-group">
+    <img src="{{asset('storage/images'. Auth::user()->images) }})" alt="">
     <input type="text" class="post-input" name="post" placeholder="投稿内容を入力してください">
     <button type="submit" class="post-submit">
       <img src="{{ asset('images/post.png')}}">
@@ -16,47 +17,53 @@
 </form>
 
 
-<div class="post-contents">
-  @foreach($posts as $post)
-  <div class="tweet-area">
-    <tr>
-      <td>
-        {{$post->user->username}}
-      </td>
-      <p>
-        <td>
-          {{$post->post}}
-        </td>
-      </p>
-      <!-- 編集ボタン 参考サイトのまんま-->
-      <td>
-        <div class=" content">
-          <a class="js-modal-open" href="" post="{{$post->post}}" post_id="{{ $post->id }}">
-            <img src="{{asset('images/edit.png')}}" alt="">
-          </a>
-        </div>
-      </td>
+@foreach($followPost as $followPost)
+<ul class="post-contents">
+  <li class="post-contents-images">
+    <img src="{{ asset( 'storage/' . $followPost->user->images) }}" class="logo">
+  </li>
+  <li class="post-contents-posts">
+    <p>{{ $followPost->user->username }}</p>
+    <p>{{ $followPost->post }}</p>
+  </li>
 
-      <!-- 削除ボタン -->
-      <td><a class="trash" href="/top/{{$post->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか')">
-          <img src="{{asset('images/trash-h.png')}}" alt="">
+  <li class="post-contents-update">
+    <p>{{ $followPost->updated_at }}</p>
+
+    @if ($followPost->user_id === Auth::user()->id)
+    <div class="edit-box">
+      <!-- モーダルを開くボタン -->
+      <div>
+        <!-- 投稿の編集ボタン -->
+        <a class="js-modal-open" href="posts/update" post="{{ $followPost->post }}" post_id="{{ $followPost->id }}">
+          <img src="{{ asset('images/edit.png')}}">
         </a>
-      </td>
-      </tda>
-    </tr>
-    @endforeach
-    <!-- モーダル内 -->
-    <div class="modal js-modal">
-      <div class="modal__bg js-modal-close"></div>
-      <div class="modal__content">
-        <form action="post/update" method="post">
-          <textarea class="modal_post" name="up_post"></textarea>
-          <input type="hidden" name="id" class="modal_id" value="{{$post->id}}">
-          <input class="up-submit" type="submit" value="更新" src="{{asset('images/edit.png')}}">
-          {{csrf_field()}}
-        </form>
-        <a class="js-modal-close" href="">閉じる</a>
+      </div>
+      <!-- 削除ボタン -->
+      <div>
+        <a class="trash" href="/top/{{$followPost->id}}/delete" onclick="return confirm('こちらの投稿を削除してもよろしいでしょうか？')">
+          <img src="{{ asset('images/trash-h.png')}}">
+        </a>
       </div>
     </div>
+  </li>
+  @endif
+</ul>
+
+@endforeach
+<!-- モーダル内 -->
+<div class="modal js-modal">
+  <div class="modal__bg js-modal-close"></div>
+  <div class="modal__content">
+    <form action="post/update" method="post">
+      <textarea class="modal_post" name="up_post"></textarea>
+      <input type="hidden" name="id" class="modal_id" value="{{$followPost->id}}">
+      <input class="up-submit" type="submit" value="更新" src="{{asset('images/edit.png')}}">
+      {{csrf_field()}}
   </div>
-  @endsection
+  </form>
+  <a class="js-modal-close" href="">閉じる</a>
+
+</div>
+</div>
+@endsection

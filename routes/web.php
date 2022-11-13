@@ -42,7 +42,6 @@ Route::group(['middleware' => 'guest'], function () {
 Route::group(['middleware' => "auth"], function () {
   // ログアウト
   Route::get('/logout', 'Auth\LoginController@logout');
-
   Route::get('/top', 'PostsController@index');
   //投稿機能
   Route::post('/post-create', 'PostsController@create');
@@ -66,9 +65,9 @@ Route::group(['middleware' => "auth"], function () {
   Route::get('/follower-list', 'FollowsController@followerList');
 
   Route::post('/follow_create', 'UsersController@follow_create');
-  Route::get('/top/{id}/delete', 'UsersController@delete');
+  // Route::get('/top/{id}/delete', 'UsersController@delete');
   //投稿削除機能
-  Route::post('post/update', 'UsersController@update');
+  // Route::post('post/update', 'UsersController@update');
   // フォロー
   Route::get('/search/{id}/follow', 'FollowsController@follow');
   // フォロー解除

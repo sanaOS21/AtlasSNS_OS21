@@ -9,7 +9,7 @@ header {
     background: #186AC9;
 }
 
-/* 【topのヘッダー】 */
+/* 【top】 */
 /* topのヘッダー（青部分）　範囲指定 */
 #head {
     display: flex;
@@ -23,6 +23,94 @@ header {
     width: 80px;
     padding-left: 20px;
 }
+
+/*　上段投稿入力欄　幅 */
+#row {
+    display: flex;
+    flex-flow: row wrap;
+}
+
+#container {
+    flex: 0 0 80%;
+}
+
+#side-bar {
+    flex: 0 0 19%;
+    border-left: 1px solid #727272;
+}
+
+#headAccordion {
+    position: relative;
+}
+
+/* username,icon 間隔 */
+.atlas-accordion {
+    width: 210px;
+    padding: 5px;
+    color: #fff;
+    font-size: 17px;
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+/* 閉じている時 */
+.atlas-accordion::before {
+    content: "∧";
+    position: absolute;
+    left: 150px;
+}
+
+/* 開いている時 */
+.atlas-accordion.is-active::before {
+    content: "v";
+}
+
+/* アコーディオンメニューを表示 */
+.atlas-accordion-ul.is-active {
+    display: block;
+}
+
+.atlas-accordion-li {
+    text-align: center;
+    background: #fff;
+    height: 30px;
+    padding-top: 30px;
+}
+
+.atlas-accordion-li a {
+    color: #3e3e3e;
+    font-size: 20px;
+}
+
+.atlas-accordion-middle {
+    text-align: center;
+    background: rgb(39, 17, 233);
+    height: 30px;
+    padding-top: 30px;
+}
+
+.atlas-accordion-middle a {
+    color: #fff;
+    font-size: 20px;
+}
+
+/* アコーディオンメニュー内 */
+.atlas-accordion-ul {
+    display: none;
+    border: 2px solid #000;
+
+    width: 180px;
+
+    position: absolute;
+    top: 70px;
+    right: 0px;
+    z-index: 10;
+}
+
+
+
 
 /*【モーダル記述】 */
 .content {
@@ -53,18 +141,17 @@ header {
     top: 50%;
     transform: translate(-50%, -50%);
     width: 60%;
+    border-radius: 10px;
 }
 
 .textbox {
     width: 650px;
     height: 210px;
     margin: 0 auto;
-
     position: relative;
 }
 
 .modal_post {
-
     width: 650px;
     height: 200px;
 }
@@ -78,102 +165,10 @@ header {
 .js-modal-close {
     position: absolute;
     bottom: 10px;
-
     color: #000;
     font-weight: bold;
 }
 
-
-
-
-
-
-
-/* main content */
-
-#row {
-    display: flex;
-    flex-flow: row wrap;
-}
-
-#container {
-    flex: 0 0 80%;
-}
-
-#side-bar {
-    flex: 0 0 19%;
-    border-left: 1px solid #727272;
-}
-
-#headAccordion {
-    position: relative;
-}
-
-/* username,icon 間隔 */
-.atlas-accordion {
-    width: 260px;
-    padding: 15px;
-    color: #fff;
-    font-size: 20px;
-    position: relative;
-
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-/* 閉じている時 */
-.atlas-accordion::before {
-    content: "∧";
-    position: absolute;
-    left: 150px;
-}
-
-/* 開いている時 */
-.atlas-accordion.is-active::before {
-    content: "v";
-}
-
-/* アコーディオンメニュー内 */
-.atlas-accordion-ul {
-    display: none;
-    border: 2px solid #000;
-
-    width: 180px;
-
-    position: absolute;
-    top: 70px;
-    right: 0px;
-    z-index: 10;
-}
-
-.atlas-accordion-ul.is-active {
-    display: block;
-}
-
-.atlas-accordion-li {
-    text-align: center;
-    background: #fff;
-    height: 30px;
-    padding-top: 30px;
-}
-
-.atlas-accordion-li a {
-    color: #3e3e3e;
-    font-size: 20px;
-}
-
-.atlas-accordion-middle {
-    text-align: center;
-    background: rgb(39, 17, 233);
-    height: 30px;
-    padding-top: 30px;
-}
-
-.atlas-accordion-middle a {
-    color: #fff;
-    font-size: 20px;
-}
 
 /* アイコン */
 .logo {
@@ -183,22 +178,23 @@ header {
 
 /* サイドバー */
 #confirm {
-    padding: 20px;
+    padding: 10px;
     border-bottom: 1px solid #727272;
+    /* 下線 */
 }
 
-.side-followlist {
+.side-follow-list {
     display: flex;
     margin-top: 20px;
 }
 
-.side-followlist p:nth-child(2) {
+.side-follow-list p:nth-child(2) {
     margin-left: 50px;
 }
 
 .list-btn {
-    margin-top: 25px;
-    margin-left: 100px;
+    margin-top: 10px;
+    margin-left: 50px;
     background: rgb(39, 17, 233);
     border-radius: 5px;
     padding: 10px;
@@ -258,73 +254,6 @@ header {
 
 
 
-.login-contents {
-    position: relative;
-    height: 60vh;
-    background: linear-gradient(#186AC9 1%, #05FBFF, #b8eb48, #ebd848);
-}
-
-.login-box {
-    width: 200px;
-    padding: 10px;
-    border-radius: 10px;
-    background: rgba(35, 35, 35, 0.5);
-
-    position: absolute;
-    top: 0%;
-    left: 50%;
-    transform: translate(-50%, 0%);
-}
-
-.login-welcome {
-    padding: 10px;
-    color: #fff;
-    font-size: 12px;
-    text-align: center;
-}
-
-.login-input-contents {
-    border: 1px solid #b8eb48;
-    padding: 10px;
-}
-
-.login-input-contents label {
-    color: #fff;
-    font-size: 10px;
-    display: block;
-    margin-top: 5px;
-}
-
-.login-input-contents input {
-
-    border: 1px solid #fff;
-    border-radius: 5px;
-    width: 150px;
-    margin-top: 5px;
-    height: 25px;
-
-}
-
-.login-submit {
-    background: #ef1d1d;
-    border: none;
-    color: #eaeaea;
-    padding: 5px 10px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-left: auto;
-    display: block;
-    border-radius: 5px;
-}
-
-.login-register {
-    text-align: center;
-    display: block;
-    padding: 20px;
-    color: #fff;
-    font-size: 12px;
-}
-
 .add-btn {
     background: #ef1d1d;
     border: none;
@@ -350,14 +279,12 @@ header {
     align-items: center;
     padding: 10px 50px 50px;
     height: 100px;
-    border-bottom: 7px solid #727272;
-
+    border-bottom: 3px solid #a9a9a9;
     position: relative;
 }
 
 .form-group .logo {
     height: 50px;
-
 }
 
 .post-input {
@@ -369,7 +296,6 @@ header {
 .post-input::placeholder {
     color: #dedddd;
 }
-
 
 .post-submit {
     width: auto;
@@ -393,40 +319,48 @@ header {
     right: 30px;
 }
 
-/* プロフィール編集画面 */
-.input {
-    width: 300px;
-    background: #e4e3e3;
-    border: 1px solid rgb(30, 30, 30);
-    height: 30px;
+/* 投稿一覧　真ん中寄せて、線引く */
+.post-contents {
+    display: flex;
+    position: relative;
+    padding: 5px 5px 5px 80px;
+    border-bottom: 1px solid #000;
 }
 
-.input-images {
-    display: none;
+/* 投稿画像 */
+.post-contents-images {
+    width: 50px;
 }
 
-.profile-submit {
-    width: 150px;
-    margin: 60px auto;
-    display: block;
-    height: 40px;
-    background: rgb(243, 60, 60);
-    border: none;
-    border-radius: 5px;
-    color: #fff;
+/* 投稿ネームと内容 */
+.post-contents-posts {
+    margin-left: 5px;
+    width: 250px;
 }
 
-.images-label {
-    width: 300px;
-    background: #e4e3e3;
-    border: 1px solid rgb(30, 30, 30);
-    height: 80px;
+.post-contents-posts p {
+    margin-top: 5px;
+    font-size: 14px;
+}
+
+/* 投稿日付 */
+.post-contents-update {
+    margin-left: auto;
+    position: relative;
+}
+
+.edit-box {
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    margin-top: 50px;
 }
 
 /* ユーザ検索 */
-.search-input {
-    width: 250px;
-    height: 40px;
+/* 検索欄 */
+.search-area {
+    width: 300px;
+    height: 25px;
     border-radius: 5px;
     border: 1px solid #3e3e3e;
 }
@@ -449,14 +383,182 @@ header {
     margin-left: 40px;
 }
 
-.search-box {
+/* 検索ユーザーネーム */
+.search-users-table {
     width: 400px;
     margin: 50px auto;
 }
+
 
 .search-table {
     width: 400px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.search-table li {
+    margin-top: 20px;
+}
+
+/* 行間 */
+.search-lists {
+    display: flex;
+    align-items: center;
+
+    width: 200px;
+    height: 50px;
+}
+
+.search-lists img {
+    margin-right: 20px;
+}
+
+.unfollow button {
+    background: red;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.unfollow button a {
+    color: #fff;
+
+}
+
+.follow-button-red {
+    background: #186AC9;
+    color: #fff;
+    border-radius: 10px;
+    padding: 10px 15px;
+    text-align: center;
+}
+
+.follow-button-red a {
+    color: #fff;
+
+}
+
+/* プロフィール編集画面 */
+
+.profile-contents {
+    width: 500px;
+    margin: 50px auto;
+}
+
+/* プロフィール欄　各表題 */
+.profile-contents li {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.profile-logo {
+    position: relative;
+}
+
+.profile-logo img {
+    position: absolute;
+    top: -10px;
+    left: -70px;
+}
+
+
+.profile-text {
+    width: 300px;
+    background: #e4e3e3;
+    border: 1px solid rgb(30, 30, 30);
+    height: 30px;
+}
+
+.profile-images {
+
+    padding-top: 15px;
+}
+
+.images-area {
+    width: 300px;
+    background: #e4e3e3;
+    border: 1px solid rgb(30, 30, 30);
+    height: 80px;
+}
+
+.profile-submit {
+    width: 150px;
+    margin: 60px auto;
+    display: block;
+    height: 40px;
+    background: rgb(243, 60, 60);
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+}
+
+/* ユーザーのプロフィール画面 */
+.usersprofile-contents {
+    padding: 20px 70px 50px;
+    height: 100px;
+    border-bottom: 7px solid #727272;
+    display: flex;
+    position: relative;
+}
+
+.usersprofile-posts {
+    display: flex;
+}
+
+.usersprofile-posts li {
+    display: flex;
+}
+
+.usersprofile-posts li:nth-child(2) {
+    margin-top: 40px;
+}
+
+.usresprofile-title {
+    margin-left: 40px;
+}
+
+.usersprofile-title-box {
+    margin-left: 100px;
+}
+
+/* フォローリスト */
+/* 上部フォローアイコン */
+.followlist-contents {
+    margin-top: 20px;
+    margin-left: 80px;
+    display: flex;
+    width: 500px;
+    height: 100px;
+}
+
+/* 上部フォローアイコン　間隔 */
+.follow-contents-images {
+    display: block;
+    margin-left: 10px;
+}
+
+/* フォロー投稿　線引きまで */
+.followlist-posts {
+    border-bottom: 1px solid #727272;
+    display: flex;
+    padding: 20px 10px 20px 100px;
+    position: relative;
+}
+
+.follow-post-images {
+    width: 40px;
+}
+
+.follow-user {
+    margin-left: 40px;
+    width: 500px;
+}
+
+.follow-update {
+    position: absolute;
+    right: 10px;
 }

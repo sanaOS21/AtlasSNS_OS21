@@ -32,6 +32,7 @@
                     <img class="logo" src="{{ asset('storage/images/' . Auth::user()->images) }}">
                 </div>
             </div>
+        </div>
     </header>
     <ul class="atlas-accordion-ul">
         <li class="atlas-accordion-li"><a href=" /top">HOME</a></li>
@@ -60,9 +61,9 @@
                 </div>
 
                 <p class="list-btn"><a href="/follower-list">フォロワーリスト</a></p>
-
             </div>
             <p class="side-search"><a href="/search">ユーザー検索</a></p>
+
         </div>
     </div>
     <footer>
