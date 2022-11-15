@@ -405,7 +405,6 @@ header {
 .search-lists {
     display: flex;
     align-items: center;
-
     width: 200px;
     height: 50px;
 }
@@ -414,7 +413,7 @@ header {
     margin-right: 20px;
 }
 
-.unfollow button {
+.unfollow-button {
     background: red;
     color: #fff;
     border-radius: 10px;
@@ -422,7 +421,7 @@ header {
     text-align: center;
 }
 
-.unfollow button a {
+.unfollow-button a {
     color: #fff;
 
 }

@@ -7,7 +7,7 @@
   @csrf
 
   <div class="form-group">
-    <img src="{{asset('storage/images'. Auth::user()->images) }})" alt="">
+    <img src=" {{ asset('storage/images/' . Auth::user()->images) }}">
     <input type="text" class="post-input" name="post" placeholder="投稿内容を入力してください">
     <button type="submit" class="post-submit">
       <img src="{{ asset('images/post.png')}}">
@@ -20,7 +20,7 @@
 @foreach($followPost as $followPost)
 <ul class="post-contents">
   <li class="post-contents-images">
-    <img src="{{ asset( 'storage/' . $followPost->user->images) }}" class="logo">
+    <img src="{{ asset( 'storage/images/' . $followPost->user->images) }}" class="logo">
   </li>
   <li class="post-contents-posts">
     <p>{{ $followPost->user->username }}</p>
@@ -57,13 +57,11 @@
   <div class="modal__content">
     <form action="post/update" method="post">
       <textarea class="modal_post" name="up_post"></textarea>
-      <input type="hidden" name="id" class="modal_id" value="{{$followPost->id}}">
+
       <input class="up-submit" type="submit" value="更新" src="{{asset('images/edit.png')}}">
       {{csrf_field()}}
   </div>
   </form>
   <a class="js-modal-close" href="">閉じる</a>
-
-</div>
 </div>
 @endsection

@@ -18,7 +18,7 @@
   <ul class="search-table">
     @if (Auth::user()->id != $user->id)
     <li class="search-lists">
-      <img src="{{asset('storage/images'. Auth::user()->images) }})">
+      <img class="logo" src="{{ asset( 'storage/images/' . $user->images) }}">
       {{$user->username}}
     </li>
     @if(Auth::user()->isFollowing($user->id))

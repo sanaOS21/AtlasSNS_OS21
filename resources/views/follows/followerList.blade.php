@@ -20,7 +20,7 @@
   <li class="followlist-posts">
     <a href="/{{$followerAll->id}}/profile">
       <div class="follow-post-images">
-        <img class="logo" src="{{ asset('storage/images'.$followerPost->user->images) }}" alt="">
+        <img class="logo" src="{{ asset('storage/images/' . $followerPost->user->images) }}" alt="">
       </div>
     </a>
     <div class="follow-user">
