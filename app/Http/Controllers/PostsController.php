@@ -32,10 +32,12 @@ class PostsController extends Controller
     //カリキュラム参考
     public function update(Request $request)
     {
-
         $id = $request->input('id');
 
         $up_post = $request->input('up_post');
+        $rules = ['up_post' => 'required|string|max:150',];
+        $this->validate($request, $rules);
+
         \DB::table('posts')
             ->where('id', $id)
             ->update(['post' => $up_post]);

@@ -8,7 +8,7 @@
 
   <div class="form-group">
     <img src=" {{ asset('storage/images/' . Auth::user()->images) }}">
-    <input type="text" class="post-input" name="post" placeholder="投稿内容を入力してください">
+    <input type="text" class="post-input" name="post" placeholder="投稿内容を入力してください" required="required">
     <button type="submit" class="post-submit">
       <img src="{{ asset('images/post.png')}}">
     </button>
@@ -35,7 +35,7 @@
       <!-- モーダルを開くボタン -->
       <div>
         <!-- 投稿の編集ボタン -->
-        <a class="js-modal-open" href="posts/update" post="{{ $followPost->post }}" post_id="{{ $followPost->id }}">
+        <a class="js-modal-open" href="/top/posts/update" post="{{ $followPost->post }}" post_id="{{ $followPost->id }}">
           <img src="{{ asset('images/edit.png')}}">
         </a>
       </div>
@@ -57,8 +57,8 @@
   <div class="modal__content">
     <form action="post/update" method="post">
       <textarea class="modal_post" name="up_post"></textarea>
-
-      <input class="up-submit" type="submit" value="更新" src="{{asset('images/edit.png')}}">
+      <input type="hidden" name="id" class="modal_id" value="">
+      <input class="up-submit" type="image" value="更新" src="{{asset('images/edit.png')}}">
       {{csrf_field()}}
   </div>
   </form>

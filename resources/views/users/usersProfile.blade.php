@@ -2,17 +2,17 @@
 
 @section('content')
 
-<div class="usersprofile-contents">
+<div class="users-profile-contents">
   <img class="logo" src="{{ asset('storage/images/' . $user_id->images) }}">
 
-  <ul class="usersprofile-posts">
+  <ul class="users-profile-posts">
     <li>
-      <p class="usersprofile-title">name:</p>
-      <p class="usersprofile-title-box">{{$user_id->username}}</p>
+      <p class="users-profile-title">name:</p>
+      <p class="users-profile-box">{{$user_id->username}}</p>
     </li>
     <li>
-      <p class="usersprofile-title">bio:</p>
-      <p class="usersprofile-title-box">{{$user_id->bio}}</p>
+      <p class="users-profile-title">bio:</p>
+      <p class="users-profile-box">{{$user_id->bio}}</p>
     </li>
   </ul>
 
@@ -42,5 +42,5 @@
     @endforeach
 
   </ul>
-
-  @endsection
+</div>
+@endsection

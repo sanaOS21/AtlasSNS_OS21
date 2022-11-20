@@ -496,7 +496,8 @@ header {
 }
 
 /* ユーザーのプロフィール画面 */
-.usersprofile-contents {
+/* 先頭間隔、線引きまで */
+.users-profile-contents {
     padding: 20px 70px 50px;
     height: 100px;
     border-bottom: 7px solid #727272;
@@ -504,23 +505,25 @@ header {
     position: relative;
 }
 
-.usersprofile-posts {
+
+/* .users-profile-posts {
+    display: flex;
+} */
+
+/* 名前の間隔 */
+.users-profile-posts li {
     display: flex;
 }
 
-.usersprofile-posts li {
-    display: flex;
-}
-
-.usersprofile-posts li:nth-child(2) {
+.users-profile-posts li:nth-child(2) {
     margin-top: 40px;
 }
 
-.usresprofile-title {
+.users-profile-title {
     margin-left: 40px;
 }
 
-.usersprofile-title-box {
+.users-profile-box {
     margin-left: 100px;
 }
 
