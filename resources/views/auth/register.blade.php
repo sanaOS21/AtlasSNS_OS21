@@ -2,9 +2,11 @@
 
 @section('content')
 
-@foreach ($errors->all() as $error)
-<li>{{$error}}</li>
-@endforeach
+<ul class="login-errors">
+  @foreach ($errors->all() as $error)
+  <li>{{$error}}</li>
+  @endforeach
+</ul>
 {!!Form::open(['url' => 'register','class'=>'login-contents' ])!!}
 @csrf
 <div class="login-box">

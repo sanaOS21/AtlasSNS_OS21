@@ -3,7 +3,10 @@
 @section('content')
 
 <div class="users-profile-contents">
-  <img class="logo" src="{{ asset('storage/images/' . $user_id->images) }}">
+
+  <div>
+    <img class="logo" src="{{ asset('storage/images/' . $user_id->images) }}">
+  </div>
 
   <ul class="users-profile-posts">
     <li>
@@ -17,30 +20,34 @@
   </ul>
 
   @if(Auth::user()->isFollowing($user_id->id))
-  <div class="usersprofile-btn">
-    <a class="unfollow-btn" href="/search/{{$user_id->id}}/unfollow">フォロー解除
+  <div class="users-profile-btn">
+    <a class="unfollow-button" href="/search/{{$user_id->id}}/unfollow">フォロー解除
     </a>
   </div>
   @else
-  <div class="usersprofile-btn">
-    <a href="/search/{{$user_id->id}}/follow">フォローする
+  <div class="users-profile-btn">
+    <a class="follow-button-red" href="/search/{{$user_id->id}}/follow">フォローする
     </a>
   </div>
   @endif
 
-  <ul>
-    @foreach ($userPost as $userPost)
-    <li class="followlist-posts">
-      <img class="logo" src="{{ asset('storage/images/' . $userPost->user->images) }}" alt="">
-      <div>
-        <p>{{$userPost->username}}</p>
-        <p>{{$userPost->updated_at}}</p>
-      </div>
-      <p class="follow-update">{{$userPost->post}}</p>
-
-    </li>
-    @endforeach
-
-  </ul>
 </div>
+
+<ul>
+  @foreach ($userPost as $userPost)
+  @if($userPost->id)
+  <li class="followlist-posts">
+    <img class="logo" src="{{ asset('storage/images/' . $userPost->user->images) }}" alt="">
+    <div>
+      <p>{{$userPost->username}}</p>
+      <p>{{$userPost->post}}</p>
+    </div>
+    <p class="follow-update">{{$userPost->updated_at}}</p>
+
+  </li>
+  @endif
+  @endforeach
+
+</ul>
+
 @endsection

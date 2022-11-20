@@ -253,26 +253,6 @@ header {
 }
 
 
-
-.add-btn {
-    background: #ef1d1d;
-    border: none;
-    color: #eaeaea;
-    padding: 5px;
-    margin-top: 10px;
-    text-align: center;
-    display: block;
-    border-radius: 5px;
-    width: 75px;
-    height: 25px;
-    margin: 0 auto;
-}
-
-.add-btn a {
-    color: #eaeaea;
-    font-size: 10px;
-}
-
 /* 投稿ページ */
 .form-group {
     display: flex;
@@ -436,7 +416,6 @@ header {
 
 .follow-button-red a {
     color: #fff;
-
 }
 
 /* プロフィール編集画面 */
@@ -506,10 +485,6 @@ header {
 }
 
 
-/* .users-profile-posts {
-    display: flex;
-} */
-
 /* 名前の間隔 */
 .users-profile-posts li {
     display: flex;
@@ -517,6 +492,12 @@ header {
 
 .users-profile-posts li:nth-child(2) {
     margin-top: 40px;
+}
+
+.users-profile-btn {
+    position: absolute;
+    right: 10px;
+    bottom: 30px;
 }
 
 .users-profile-title {
