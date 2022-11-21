@@ -29,7 +29,7 @@
             <div id="headAccordion">
                 <div class="atlas-accordion is-active">
                     <p class="head-name">{{ Auth::user()->username}}さん</p>
-                    <img class="logo" src="{{ asset('storage/images/' . Auth::user()->images) }}">
+                    <img class="login-logo" src="{{ asset('storage/images/' . Auth::user()->images) }}">
                 </div>
             </div>
         </div>

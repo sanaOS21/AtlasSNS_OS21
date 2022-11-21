@@ -7,7 +7,12 @@
   @csrf
 
   <div class="form-group">
-    <img src=" {{ asset('storage/images/' . Auth::user()->images) }}">
+    <!-- アイコン入ってない時 -->
+    @if (Auth::user()->images==='icon1.png')
+    <p><img src="{{ asset('images/icon1.png') }}" class="logo" alt=""></p>
+    @else
+    <p><img src=" {{ asset('storage/images/' . Auth::user()->images) }}" class="logo"></p>
+    @endif
     <input type="text" class="post-input" name="post" placeholder="投稿内容を入力してください" required="required">
     <button type="submit" class="post-submit">
       <img src="{{ asset('images/post.png')}}">

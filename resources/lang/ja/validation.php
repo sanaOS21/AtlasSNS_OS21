@@ -131,7 +131,7 @@ return [
     'custom' => [
         'username' => [
             'required' => 'ユーザ名は必須項目です',
-            'max', 'min' => '2~12文字以内で入力をしてください'
+            'max', 'min' => 'ユーザネームは2~12文字以内で入力をしてください'
         ],
         'mail' => [
             'required' => 'メールアドレスは必須項目です',
@@ -141,7 +141,11 @@ return [
         'password' => [
             'required' => 'パスワードは必須項目です',
             'min', 'max' => '8~20文字以内で入力をしてください'
+        ],
+        'password_confirmation' => [
+            'required' => 'パスワード確認は必須項目です',
         ]
+
     ],
 
     /*

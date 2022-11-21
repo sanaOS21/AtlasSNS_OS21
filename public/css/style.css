@@ -176,6 +176,11 @@ header {
     max-width: 50px;
 }
 
+.login-logo {
+    width: 100%;
+    max-width: 50px;
+}
+
 /* サイドバー */
 #confirm {
     padding: 10px;
@@ -443,7 +448,6 @@ header {
     left: -70px;
 }
 
-
 .profile-text {
     width: 300px;
     background: #e4e3e3;
@@ -451,9 +455,11 @@ header {
     height: 30px;
 }
 
-.profile-images {
 
+.profile-images {
     padding-top: 15px;
+    width: 96px;
+    height: 65px;
 }
 
 .images-area {
@@ -461,6 +467,7 @@ header {
     background: #e4e3e3;
     border: 1px solid rgb(30, 30, 30);
     height: 80px;
+
 }
 
 .profile-submit {
@@ -506,7 +513,14 @@ header {
 
 .users-profile-box {
     margin-left: 100px;
+    position: absolute;
 }
+
+
+.users-profile-area {
+    margin-left: 40px;
+}
+
 
 /* フォローリスト */
 /* 上部フォローアイコン */

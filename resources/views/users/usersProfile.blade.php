@@ -38,8 +38,8 @@
   @if($userPost->id)
   <li class="followlist-posts">
     <img class="logo" src="{{ asset('storage/images/' . $userPost->user->images) }}" alt="">
-    <div>
-      <p>{{$userPost->username}}</p>
+    <div class="users-profile-area">
+      <p>{{$user_id->username}}</p>
       <p>{{$userPost->post}}</p>
     </div>
     <p class="follow-update">{{$userPost->updated_at}}</p>

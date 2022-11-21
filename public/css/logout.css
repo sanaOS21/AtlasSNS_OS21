@@ -30,7 +30,7 @@ body {
 /* 背景グラデーション */
 .login-contents {
     position: relative;
-    height: 60vh;
+    height: 70vh;
     background: linear-gradient(#186AC9, #5792d6, #92cf91, #ffcc33);
 }
 
@@ -40,7 +40,6 @@ body {
     padding: 25px;
     border-radius: 10px;
     background: rgba(80, 80, 80, 0.3);
-
     position: absolute;
     top: 0%;
     left: 50%;
@@ -67,14 +66,14 @@ body {
     font-size: 10px;
     display: block;
     margin-top: 5px;
+
 }
 
 /* テキストボックスを整える */
 .login-input-contents input {
-
     border: 1px solid #fff;
     border-radius: 5px;
-    width: 200px;
+    width: 250px;
     margin-top: 5px;
     height: 25px;
 }

@@ -24,11 +24,11 @@
   </li>
   <li class="profile-contents-password">
     <p>{{ Form::label('password','password')}}</p>
-    <p>{{ Form::text('password', null,['class' => 'profile-text'])}}</p>
+    <p>{{ Form::password('password', null,['class' => 'profile-text'])}}</p>
   </li>
   <li class="profile-contents-pass-con">
     <p>{{ Form::label('password_confirm','password confirm')}}</p>
-    <p>{{ Form::text('password_confirmation',null,['class' => 'profile-text'])}}</p>
+    <p>{{ Form::password('password_confirmation',null,['class' => 'profile-text'])}}</p>
   </li>
   <li class="profile-contents-bio">
     <p>{{ Form::label('bio','bio')}}</p>
