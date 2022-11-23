@@ -8,8 +8,8 @@
 
   <div class="form-group">
     <!-- アイコン入ってない時 -->
-    @if (Auth::user()->images==='icon1.png')
-    <p><img src="{{ asset('images/icon1.png') }}" class="logo" alt=""></p>
+    @if (Auth::user()->images==='noimage.png')
+    <p><img src="{{ asset('storage/images/noimage.png')}}" class="logo" alt=""></p>
     @else
     <p><img src=" {{ asset('storage/images/' . Auth::user()->images) }}" class="logo"></p>
     @endif

@@ -66,4 +66,14 @@ class PostsController extends Controller
         $post->save();
         return redirect('posts.index', ['post' => $post]);
     }
+
+    public function images(Request $request, User $user)
+    {
+        if ($originalImg->isValid()) {
+            $filePath = $originalImg->store('public');
+            $user->image = str_replace('public/', '', $filePath);
+            $user->save();
+            return redirect("/top")->with('user', $user);
+        }
+    }
 }
