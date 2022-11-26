@@ -28,13 +28,14 @@
       </div>
       @else
       <a class="follow-button-red" href="/search/{{$user->id}}/follow" method="get">フォローする</a>
+
     </li>
     @endif
 
     @endif
   </ul>
 
+
   @endforeach
 </div>
-
 @endsection
