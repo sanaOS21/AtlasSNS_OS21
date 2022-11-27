@@ -17,6 +17,7 @@ class UsersTableSeeder extends Seeder
       'username' => 'UserName',
       'mail' => 'User@mail',
       'password' => Hash::make('secret'),
+      // 'password' => bcrypt('useruser'),
     ]);
   }
 }

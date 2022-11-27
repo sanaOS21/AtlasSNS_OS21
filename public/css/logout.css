@@ -31,6 +31,7 @@ body {
 .login-contents {
     position: relative;
     height: 70vh;
+    background: #ffcc33;
     background: linear-gradient(#186AC9, #5792d6, #92cf91, #ffcc33);
 }
 
